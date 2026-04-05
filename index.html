@@ -1,11 +1,432 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Get friskie</title>
-     <meta charset="UTF-8" />
-     <meta http-equiv="refresh" content="0; URL=https://frisk.ie/" />
-   </head>
-   <body>
-     <p>We're redirecting you to the correct URL. If that doesn't work automatically within 3 seconds, then  <a href="https:/frisk.ie/">please click here</a>.</p>
-   </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get friskie!</title>
+<meta name="description" content="Time to get friskie! Naughty, fun, flirty, no-strings-attached adult chat experience. Join singles near you today. 100% free to join.">
+<meta name="keywords" content="adult chat, flirty dating, hookup, casual dating, no-strings-attached, flirt online">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Get Friskie",
+  "url": "https://www.get.frisk.ie",
+  "description": "Time to get friskie! Naughty, fun, flirty, no-strings-attached adult chat experience.",
+  "potentialAction": {
+    "@type": "SubscribeAction",
+    "target": "https://www.get.frisk.ie",
+    "name": "Get Friskie"
+  }
+}
+</script>
+
+<!-- Inline CSS -->
+<style>
+:root 
+{
+
+  --primary-color: #ff3366;
+  --secondary-color: #6633ff;
+  /* --accent-color: #00b894;  */
+  --accent-color: #33ffcc;
+  --accent-color-30: #24b38f;
+  --forth-color-dark: #ccff33;
+
+  --body-background-color: #fff0f5;
+  --hero-background-color: #fff; 
+  --text-color: #333;
+
+  --free-note-color: var(--primary-color);
+  --social-proof-color: var(--primary-color);
+
+  --success-color: var(--accent-color-30);
+  --error-color:rgb(226, 24, 24);
+
+  --email-background-color: var(--accent-color-30);
+  --submit-input-border-color: var(--email-background-color);
+  --email-message-color: var(--success-color);
+  --submit-button-color: #fff;
+  --submit-button-background-color: var(--email-background-color);
+  --submit-button-hover-color: #019875;
+  --submit-button-active-color: #017f5b;
+  
+  --chat-left-color: #000;
+  --chat-left-background-color: #ffe6f0;
+  --chat-right-color: #fff; 
+  --chat-right-background-color: #f57e9c; 
+
+  --chat-typing-color: #000;
+  --chat-typing-background-color: #ffe6f0;
+  --chat-typing-threedots-color: var(--primary-color);
+
+  --footer-color: #aaa;
+}
+
+
+body 
+{
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--body-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.hero-card 
+{
+  height: 90vh; /* full viewport height */
+  justify-content: center; /* vertically center content */
+  padding: 20px 10px; /* optional slight padding */
+
+  background: var(--hero-background-color);
+  max-width: 700px;
+  width: 95%; 
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand { font-size: 2rem; margin: 0; text-align:center;}
+.tagline { font-size: 1rem; margin: 5px 0; text-align:center;}
+.social-proof { font-size: 0.85rem; color: var(--social-proof-color); margin-bottom: 0px; margin-block-start: 0em; text-align:center;}
+.free-note { font-weight: bold; font-size: 0.85rem; color: var(--free-note-color); margin-bottom: 15px; margin-block-start: 0em; text-align:center;}
+
+#chat-window 
+{
+  width: 100%;
+  height: 350px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-right: 5px;
+  box-sizing: border-box;
+}
+
+.bubble 
+{
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.left 
+{
+  background: var(--chat-left-background-color);
+  color: var(--chat-left-color);
+  align-self: flex-start;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.right 
+{
+  background: var(--chat-right-background-color);
+  color: var(--chat-right-color);
+  align-self: flex-end;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.typing 
+{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  background: var(--chat-typing-background-color);
+  width: 50px;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.typing span 
+{
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--chat-typing-threedots-color);
+  border-radius: 50%;
+  animation: bounce 1s infinite;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce 
+{
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+}
+ 
+.submit-container 
+{
+  width:100%;
+
+  display:grid; 
+  grid-template-columns: 1fr;
+  gap:10px;
+  
+  border-top:1px solid #eee;
+  padding-top:15px;
+}
+
+.submit-container input 
+{  
+  padding: 12px; 
+  width: 100%;  
+  border-radius: 10px; 
+  border: 1px solid var(--submit-input-border-color);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+ 
+
+.submit-container button 
+{  
+  padding: 12px 25px;
+  border: none; 
+  border-radius: 10px; 
+  background: var(--submit-button-background-color); 
+  color: var(--submit-button-color); 
+  font-weight: 600; 
+  cursor: pointer; 
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+.submit-container button:hover 
+{ 
+  background: var(--submit-button-hover-color); 
+  transform: translateY(-2px); 
+}
+.submit-container button:active 
+{ 
+  background: var(--submit-button-active-color); 
+  transform: translateY(0); 
+}
+
+ 
+ /* Desktop layout */
+@media (min-width: 768px) 
+{
+  .hero-card 
+  {
+    min-height: 600px;
+  }
+
+  .submit-container 
+  { 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px; 
+  }
+ 
+  .submit-container input { width: 100%; font-size:1.05rem;}
+  .submit-container button { width: auto; font-size:1rem;}
+
+  .submit-status-msg 
+  {  
+    grid-column: span 3;
+  }
+}
+
+.submit-status-msg 
+{    
+  color: var(--email-message-color); 
+  margin-top: 5px; 
+  font-size: 0.9rem; 
+  width: 100%; 
+  text-align: center; 
+}
+
+footer.footer 
+{ 
+  font-size: 0.75rem; 
+  margin-top: 0px; 
+  color: var(--footer-color); 
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div id="hero-card" class="hero-card">
+    <h1 class="brand">Get friskie</h1>
+    <p class="tagline">Naughty, fun, flirty, no-strings-attached...</p>
+    <p class="social-proof">🔥 people near you are active</p>
+    <p class="free-note">🎁 100% free to join</p>
+
+    <div id="chat-window"></div>
+
+    <div id="submit-container" class="submit-container">
+      <input 
+        type="text" 
+        id="name-input" 
+        placeholder="Your name..." 
+        aria-label="Name" 
+      />
+
+      <input 
+        type="email" 
+        id="email-input" 
+        placeholder="email" 
+        aria-label="Email address" 
+      />
+
+      <button id="submit-button">Get friskie — it’s free</button>
+
+      <p id="submit-status-msg" class="submit-status-msg" aria-live="polite"></p>
+    </div>
+
+    <footer class="footer">
+      Strictly 21+ adults only!<br>
+      Private. Discreet. Secure.<br>
+      © 2026 frisk.ie All rights reserved.
+    </footer>
+</div>
+
+<!-- Inline JS -->
+<script>
+//const API_URL = "http://localhost:5221/api/interest";
+const API_URL = "https://expressionofinterestapi.azurewebsites.net/api/interest";
+ 
+
+var cssRoot = document.querySelector(':root');
+
+const conversations = [
+  [
+    { side: "left", text: "Hey there 😉" },
+    { side: "right", text: "Hi!" },
+    { side: "left", typing: true },
+    { side: "left", text: "Looking for some fun?" }, 
+    { side: "right", text: "Maybe 😏" }
+  ],
+  [
+    { side: "left", text: "You look interesting 😘" }, 
+    { side: "right", text: "Thanks!" },
+    { side: "left", typing: true },
+    { side: "left", text: "Want to chat a bit?" }
+  ]
+];
+
+const chatWindow = document.getElementById("chat-window");
+const nameInput = document.getElementById("name-input");
+const emailInput = document.getElementById("email-input");
+const emailButton = document.getElementById("submit-button");
+const submitStatusMsg = document.getElementById("submit-status-msg");
+
+const convo = conversations[Math.floor(Math.random()*conversations.length)];
+let index = 0;
+
+function showMessage() 
+{
+  if (index >= convo.length) return;
+  const msgData = convo[index];
+  
+  if (msgData.typing) {
+    const typingEl = document.createElement("div");
+    typingEl.className = "typing";
+    typingEl.innerHTML = "<span></span><span></span><span></span>";
+    chatWindow.appendChild(typingEl);
+    setTimeout(() => { typingEl.remove(); index++; showMessage(); }, 1500);
+    return;
+  }
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble " + msgData.side;
+  bubble.textContent = msgData.text;
+  chatWindow.appendChild(bubble);
+
+  setTimeout(() => { bubble.style.opacity = "1"; bubble.style.transform="translateY(0)"; }, 50);
+
+  index++;
+  setTimeout(showMessage, 1000 + Math.random()*200);
+}
+showMessage();
+
+function addMessageToChatAfterSubmit() 
+{ 
+  const typingEl = document.createElement('div');
+    typingEl.className = 'typing';
+    typingEl.innerHTML = '<span></span><span></span><span></span>';
+    chatWindow.appendChild(typingEl);
+    chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+
+    setTimeout(() => {
+      chatWindow.removeChild(typingEl);
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble left';
+      bubble.textContent = "🎉 Okay, you're offically on the list now. Keep an eye on your inbox for updates! 😉";
+      chatWindow.appendChild(bubble);
+      setTimeout(() => {
+        bubble.style.opacity = 1;
+        bubble.style.transform = 'translateY(0)';
+        chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+      }, 50);
+    }, 2000);
+}
+
+// CTA Email submit
+emailButton.addEventListener("click", () => 
+{
+  //Reset the colour to success
+  cssRoot.style.setProperty('--email-message-color', 'var(--success-color)');
+  cssRoot.style.setProperty('--submit-input-border-color', 'var(--email-background-color)'); 
+
+  const name=nameInput.value.trim();
+  if(!name)
+  {
+    //Change the colour to error and show message
+    cssRoot.style.setProperty('--email-message-color', 'var(--error-color)');
+    cssRoot.style.setProperty('--submit-input-border-color', 'var(--error-color)'); 
+
+    submitStatusMsg.textContent="Sure be mysterious, but at least tell us your name...😉";
+    return; 
+  }
+
+  const email = emailInput.value.trim();
+  if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) 
+  {
+    //Change the colour to error and show message
+    cssRoot.style.setProperty('--email-message-color', 'var(--error-color)');
+    cssRoot.style.setProperty('--submit-input-border-color', 'var(--error-color)'); 
+
+    submitStatusMsg.textContent = 'Please enter a valid email.';
+    return;
+  }
+ 
+  submitStatusMsg.textContent="Submitting..."; emailButton.disabled=true;
+ 
+  fetch(API_URL, 
+  {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({name,email})
+  })
+  .then(res=>{ if(!res.ok)throw new Error("Network response was not ok"); return res.json(); })
+  .then(data=>{ submitStatusMsg.textContent="Submitted successfully!"; nameInput.value=""; emailInput.value=""; emailButton.disabled=false; console.log("API response:",data); addMessageToChatAfterSubmit();  })
+  .catch(err=>{ submitStatusMsg.textContent="Failed to submit. Try again."; emailButton.disabled=false; console.error(err); });
+
+}); 
+
+
+</script>
+</body>
 </html>
